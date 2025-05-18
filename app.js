@@ -32,7 +32,13 @@ let p = document.createElement("p");
 let timeParent = document.createElement("div");
 let cancelButtom = document.createElement("button");
 let categoryLabel = document.createElement("label");
-
+ categoryLabel.textContent = "Category";
+  categories.forEach((cat) => {
+    let option = document.createElement("option");
+    option.value = cat.toLowerCase();
+    option.text = cat;
+    categoryParent.appendChild(option);
+  });
 //
 
 add_task.addEventListener("click", generate);
@@ -62,13 +68,7 @@ function generate() {
   //Category And Time
   // let categoryParent = document.createElement("select");
   // let categories = ["work","health", "Personal", "study", "other"];
-  categoryLabel.textContent = "Category";
-  categories.forEach((cat) => {
-    let option = document.createElement("option");
-    option.value = cat.toLowerCase();
-    option.text = cat;
-    categoryParent.appendChild(option);
-  });
+ 
   parent.appendChild(categoryLabel);
   categoryLabel.className = "catlabel";
   categoryParent.className = "cat";
@@ -115,16 +115,17 @@ function generate() {
 }
 // let theBody=document.querySelector(".task-container .left .body");
 let left = document.querySelector(".task-container .left");
-let i = document.createElement("i");
-let theBody = document.createElement("div");
-let icons = document.createElement("div");
-let check = document.createElement("input");
 
 addButtom.addEventListener("click", function () {
   if (input.value.trim() === "") {
     alert("add Task");
     return;
   } else {
+    let i = document.createElement("i");
+let theBody = document.createElement("div");
+let icons = document.createElement("div");
+let check = document.createElement("input");
+
     theBody.classList.add("body");
 
     let task = document.createElement("div");
@@ -156,6 +157,8 @@ addButtom.addEventListener("click", function () {
     left.appendChild(theBody);
     overaly.remove();
     parent.remove();
+    input.value="";
+    
   }
 });
 
