@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Css/all.min.css" />
+    <link rel="stylesheet" href="Css/normalize.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Css/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="app">
+        <nav>
+          <div class="left">
+            <i class="fa-solid fa-book"></i>
+            <h3>DayFlow Planner</h3>
+          </div>
+          <div class="rigth">
+            <ul>
+              <li>
+                <a href="#" class="active">
+                  Home
+                  <i class="fa-solid fa-house"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#"
+                  >Analyitcs
+                  <i class="fa-solid fa-chart-simple"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#"
+                  >Setting
+                  <i class="fa-solid fa-gear"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="time"></div>
+        <div class="task-container">
+          <div class="left">
+            <div class="head">
+              <h4>Today's Tasks</h4>
+              <button class="add-task">+ Add Task</button>
+            </div>
+            <div class="body">
+              <div class="task">
+                <input type="checkbox" id="check" class="check"/>
+                <div class="info">Make it Easy</div>
+                <span class="task-category personal">personal</span>
+                <span class="task-time">15:11-16:64</span>
+              </div>
+              <div class="icons">
+                <i class="fa-solid fa-trash trash"></i>
+              </div>
+            </div>
+            
+          </div>
+          <div class="right-section">
+            <div class="progress">
+              <h4>Today's Progress</h4>
+              <p>Completed: 0 | Pending: 1</p>
+            </div>
+            <div class="time-distribution">
+              <h4>Time Distribution</h4>
+              <div class="chart">
+                <p>Task Category</p>
+                <div class="legend">
+                  <span class="work">work</span>
+                  <span class="personal">personal</span>
+                  <span class="health">health</span>
+                  <span class="study">study</span>
+                  <span class="other">other</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

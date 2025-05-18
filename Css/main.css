@@ -1,0 +1,465 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:root {
+  --main-color: hsl(214.29deg 91.3% 90.98%);
+}
+body {
+  font-family: "Work Sans", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+ul {
+  /* display: flex; */
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  /* display: inline-block; */
+}
+/*Start cont*/
+.container {
+  /* padding-right: 15px;  
+  padding-left: 15px;   */
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 100%;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 100%;
+  }
+}
+/*End global*/
+.container {
+  background-color: hsl(250.91deg 57.89% 96.27%);
+  min-height: 100vh;
+}
+/*Start App*/
+.app nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--main-color);
+  padding: 15px;
+}
+.app nav .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: hsl(217.66deg 74.02% 50.2%);
+  font-weight: bold;
+  font-size: 30px;
+}
+.app nav ul {
+  display: flex;
+  gap: 10px;
+}
+.app nav ul li {
+  padding: 10px 20px;
+}
+.app nav ul li a {
+  color: black;
+  font-size: 25px;
+  transition: 0.3s;
+}
+.app nav ul li a.active,
+.app nav ul li a:hover {
+  color: rgb(157, 149, 149);
+}
+@media (max-width: 992px) {
+  .app nav {
+    text-align: center;
+  }
+  .app nav .left {
+    font-size: 20px;
+  }
+  .app nav ul li {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .app nav {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .app nav ul li {
+    padding: 10px;
+  }
+  .app nav ul li a {
+    font-size: 20px;
+  }
+  .app nav .left {
+    margin-bottom: 10px;
+  }
+}
+.time {
+  margin: 20px auto;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #777;
+  letter-spacing: 4px;
+}
+/*End App*/
+.task-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* الشمال أكبر من اليمين زي الصورة */
+  gap: 20px;
+  padding: 20px;
+}
+.task-container .left {
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.task-container .left .head {
+  background-color: var(--main-color);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.task-container .left .head h4 {
+  font-size: 20px;
+  color: #333;
+}
+.task-container .left .head button {
+  background-color: hsl(194.21deg 86.36% 56.86%);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 17px;
+}
+.task-container .left .body {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #77777773;
+  margin: 35px;
+  border-radius: 3px;
+  border-left: 7px solid orange;
+  align-items: center;
+  position: relative;
+}
+.task-container .left .task {
+  display: flex;
+  gap: 10px;
+}
+.task-container .left .task .info {
+  font-size: 16px;
+  color: #333;
+  /* word-wrap: break-word; */
+  /* max-width: 550px; */
+  display: flex;
+}
+.task-container .icons {
+  cursor: pointer;
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+  font-size: 15px;
+  .trash {
+    color: red;
+    border: 1px red solid;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .fa-check {
+    border-radius: 5px;
+    border: 1px #777 solid;
+    color: #777;
+    padding: 10px;
+  }
+}
+.task-category {
+  background-color: hsl(120, 60%, 90%); /* لون أخضر فاتح زي الصورة */
+  padding: 3px 5px;
+  border-radius: 3px;
+  font-size: 11px;
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  width: 52px;
+  text-align: center;
+}
+.task-category.work {
+  background-color: blue;
+}
+.task-category.study {
+  background-color: yellow;
+}
+.task-category.other {
+  background-color: gray;
+}
+.task-category.health {
+  background-color: red;
+}
+
+#check {
+  width: 20px; /* نصغر الـ checkbox */
+  height: 20px;
+  cursor: pointer;
+  /* position: relative; */
+}
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.progress,
+.time-distribution {
+  background-color: #fff;
+  border-radius: 10px;
+  /* padding: 15px; */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.progress h4,
+.time-distribution h4 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+  background-color: hsl(194.21deg 86.36% 56.86%);
+  padding: 10px;
+}
+
+.progress p {
+  font-size: 16px;
+  color: #777;
+  padding: 20px;
+}
+
+.time-distribution .chart {
+  text-align: center;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.legend span {
+  font-size: 14px;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.legend .work {
+  background-color: blue;
+  color: #fff;
+}
+.legend .personal {
+  background-color: green;
+  color: #fff;
+}
+.legend .health {
+  background-color: red;
+  color: #fff;
+}
+.legend .study {
+  background-color: yellow;
+}
+.legend .other {
+  background-color: gray;
+  color: #fff;
+}
+.task-time {
+  position: absolute;
+  right: 106px;
+  top: 50px;
+  color: #777;
+}
+@media (max-width: 992px) {
+  .task-container {
+    grid-template-columns: 1fr;
+  }
+}
+/*Start add Task*/
+.form {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  /* width: 300px; */
+  z-index: 1001;
+  border: 3px solid #ddd;
+  background-color: #fff;
+  padding: 20px;
+  width: 500px;
+  height: 500px;
+  max-width: 100%;
+  border-radius: 15px;
+}
+.form .header {
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+}
+.form .header .x {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: 2px solid black;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form .body {
+  /* position: absolute; */
+  margin-top: 30px;
+}
+.form .body p {
+  font-size: 25px;
+  font-weight: bold;
+  color: #777;
+}
+.form .body input {
+  width: 96%;
+  height: 51px;
+  margin-top: 13px;
+  outline: none;
+  border: 1px solid #ddd;
+  font-size: 25px;
+  border-radius: 10px;
+}
+.pop-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 50%);
+  z-index: 1000;
+}
+.cat {
+  position: relative;
+  top: 62px;
+  width: 189px;
+  height: 50px;
+  border-radius: 52px;
+  padding: 12px;
+  font-size: 20px;
+  color: #777;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  left: -85px;
+}
+.catlabel {
+  position: relative;
+  top: 14px;
+  left: 23px;
+  /* font-size: 25px; */
+  display: inline-block;
+  font-size: 20px;
+  color: #0a0909;
+  font-weight: bold;
+}
+.timeParent {
+  position: relative;
+  top: 105px;
+  display: flex;
+  justify-content: space-around;
+  left: -12px;
+  width: 10p;
+}
+
+.timeParent .startTime,
+.timeParent .endTime {
+  cursor: pointer;
+}
+
+.timeParent .startTime::before {
+  position: absolute;
+  content: "Start Time";
+  /* background: #777; */
+  /* width: 10px; */
+  left: 28px;
+  height: 11px;
+  color: #777;
+  top: -22px;
+  font-size: 20px;
+}
+.timeParent .endTime::before {
+  position: absolute;
+  content: "End Time";
+  /* background: #777; */
+  /* width: 10px; */
+  left: 196px;
+  height: 11px;
+  color: #777;
+  top: -22px;
+  font-size: 20px;
+}
+@media (min-width: 600px) {
+  .timeParent .startTime::before {
+    left: 57px;
+  }
+  .timeParent .endTime::before {
+    left: 286px;
+  }
+}
+.cat::before {
+  position: absolute;
+  color: #777;
+  content: "Category";
+  left: 10px;
+  top: 10px;
+  display: block; /* إضافة هذا */
+}
+.footer {
+  position: relative;
+  top: 198px;
+  left: 128px;
+  display: flex;
+  gap: 22px;
+  width: 200px;
+}
+.footer button {
+  border: none;
+  border-radius: 10px;
+  width: 85px;
+  height: 30px;
+  cursor: pointer;
+  color: white;
+}
+.footer button.cancel {
+  background-color: red;
+}
+.footer button.addButtom {
+  background-color: purple;
+}
+/*Start add Task*/
+.line {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
