@@ -32,13 +32,19 @@ let p = document.createElement("p");
 let timeParent = document.createElement("div");
 let cancelButtom = document.createElement("button");
 let categoryLabel = document.createElement("label");
- categoryLabel.textContent = "Category";
-  categories.forEach((cat) => {
-    let option = document.createElement("option");
-    option.value = cat.toLowerCase();
-    option.text = cat;
-    categoryParent.appendChild(option);
-  });
+let complete = 0;
+let pend = 1;
+let comp = document.querySelector(".comp");
+let tot = document.querySelector(".total");
+console.log(tot);
+
+categoryLabel.textContent = "Category";
+categories.forEach((cat) => {
+  let option = document.createElement("option");
+  option.value = cat.toLowerCase();
+  option.text = cat;
+  categoryParent.appendChild(option);
+});
 //
 
 add_task.addEventListener("click", generate);
@@ -68,7 +74,7 @@ function generate() {
   //Category And Time
   // let categoryParent = document.createElement("select");
   // let categories = ["work","health", "Personal", "study", "other"];
- 
+
   parent.appendChild(categoryLabel);
   categoryLabel.className = "catlabel";
   categoryParent.className = "cat";
@@ -122,9 +128,9 @@ addButtom.addEventListener("click", function () {
     return;
   } else {
     let i = document.createElement("i");
-let theBody = document.createElement("div");
-let icons = document.createElement("div");
-let check = document.createElement("input");
+    let theBody = document.createElement("div");
+    let icons = document.createElement("div");
+    let check = document.createElement("input");
 
     theBody.classList.add("body");
 
@@ -132,6 +138,7 @@ let check = document.createElement("input");
     task.classList.add("task");
     check.type = "checkbox";
     check.id = "check";
+    check.classList.add("check");
     let info = document.createElement("div");
     info.classList.add("info");
     info.innerHTML = input.value;
@@ -157,25 +164,49 @@ let check = document.createElement("input");
     left.appendChild(theBody);
     overaly.remove();
     parent.remove();
-    input.value="";
-    
+    input.value = "";
+    pend++;
+    comp.innerHTML = `Completed: ${complete} | Pending: ${pend}`;
+    tot.innerHTML = `Total : ${complete+pend}`;
   }
 });
 
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("trash")) {
     e.target.parentNode.parentNode.remove();
+    if (
+      e.target.parentNode.parentNode
+        .querySelector(".info")
+        .classList.contains("line")
+    ) {
+      complete--;
+      comp.innerHTML = `Completed: ${complete} | Pending: ${pend}`;
+      tot.innerHTML = `Total : ${complete+pen}`;
+    } else {
+      pend--;
+      comp.innerHTML = `Completed: ${complete} | Pending: ${pend}`;
+      tot.innerHTML = `Total : ${complete+pend}`;
+    }
   }
 });
 
-// Remove All 
+// Remove All
 
-document.addEventListener("click",function(e)
-{
-if(e.target.classList.contains('check'))
-{
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("check")) {
     e.target.classList.add("checked");
-    let deletedtext=e.target.parentElement.querySelector(".info");
-    deletedtext.classList.toggle("line")
-}
-})
+    let deletedtext = e.target.parentElement.querySelector(".info");
+    deletedtext.classList.toggle("line");
+    if (deletedtext.classList.contains("line")) {
+      complete++;
+      pend--;
+    } else {
+      complete--;
+      pend++;
+    }
+    comp.innerHTML = `Completed: ${complete} | Pending: ${pend}`;
+    tot.innerHTML = `Total : ${complete+pend}`;
+  }
+});
+
+// Today's Progress

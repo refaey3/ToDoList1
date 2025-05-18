@@ -162,6 +162,7 @@ a {
   border-left: 7px solid orange;
   align-items: center;
   position: relative;
+  font-weight: bold;
 }
 .task-container .left .task {
   display: flex;
@@ -351,6 +352,7 @@ a {
   border: 1px solid #ddd;
   font-size: 25px;
   border-radius: 10px;
+  font-weight: bold;
 }
 .pop-overlay {
   position: fixed;
