@@ -52,7 +52,7 @@
             </div>
             <div class="body">
               <div class="task">
-                <input type="checkbox" id="check" class="check"/>
+                <input type="checkbox" id="check" class="check" />
                 <div class="info">Make it Easy</div>
                 <span class="task-category personal">personal</span>
                 <span class="task-time">15:11-16:64</span>
@@ -61,7 +61,6 @@
                 <i class="fa-solid fa-trash trash"></i>
               </div>
             </div>
-            
           </div>
           <div class="right-section">
             <div class="progress">
@@ -71,21 +70,21 @@
             </div>
             <div class="time-distribution">
               <h4>Time Distribution</h4>
-              <div class="chart">
-                <p>Task Category</p>
-                <div class="legend">
-                  <span class="work">work</span>
-                  <span class="personal">personal</span>
-                  <span class="health">health</span>
-                  <span class="study">study</span>
-                  <span class="other">other</span>
-                </div>
+              <canvas class="chart" width="200" height="200"></canvas>
+              <div class="legend">
+                <span class="work">work</span>
+                <span class="personal">personal</span>
+                <span class="health">health</span>
+                <span class="study">study</span>
+                <span class="other">other</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="app.js"></script>
   </body>
 </html>

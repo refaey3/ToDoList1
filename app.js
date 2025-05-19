@@ -121,10 +121,13 @@ function generate() {
 }
 // let theBody=document.querySelector(".task-container .left .body");
 let left = document.querySelector(".task-container .left");
-
+let categoryCount = { work: 0, personal: 0, health: 0, study: 0, other: 0 };
 addButtom.addEventListener("click", function () {
   if (input.value.trim() === "") {
-    alert("add Task");
+    Swal.fire({
+      text:"Add Task",
+      icon:"error"
+    });
     return;
   } else {
     let i = document.createElement("i");
@@ -162,12 +165,15 @@ addButtom.addEventListener("click", function () {
     theBody.appendChild(task);
     theBody.appendChild(icons);
     left.appendChild(theBody);
+      
+
+
     overaly.remove();
     parent.remove();
     input.value = "";
     pend++;
     comp.innerHTML = `Completed: ${complete} | Pending: ${pend}`;
-    tot.innerHTML = `Total : ${complete+pend}`;
+    tot.innerHTML = `Total : ${complete + pend}`;
   }
 });
 
@@ -181,11 +187,11 @@ document.addEventListener("click", function (e) {
     ) {
       complete--;
       comp.innerHTML = `Completed: ${complete} | Pending: ${pend}`;
-      tot.innerHTML = `Total : ${complete+pen}`;
+      tot.innerHTML = `Total : ${complete + pen}`;
     } else {
       pend--;
       comp.innerHTML = `Completed: ${complete} | Pending: ${pend}`;
-      tot.innerHTML = `Total : ${complete+pend}`;
+      tot.innerHTML = `Total : ${complete + pend}`;
     }
   }
 });
@@ -205,7 +211,7 @@ document.addEventListener("click", function (e) {
       pend++;
     }
     comp.innerHTML = `Completed: ${complete} | Pending: ${pend}`;
-    tot.innerHTML = `Total : ${complete+pend}`;
+    tot.innerHTML = `Total : ${complete + pend}`;
   }
 });
 
