@@ -10,6 +10,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="Css/main.css" />
   </head>
   <body>
@@ -50,17 +51,7 @@
               <h4>Today's Tasks</h4>
               <button class="add-task">+ Add Task</button>
             </div>
-            <div class="body">
-              <div class="task">
-                <input type="checkbox" id="check" class="check" />
-                <div class="info">Make it Easy</div>
-                <span class="task-category personal">personal</span>
-                <span class="task-time">15:11-16:64</span>
-              </div>
-              <div class="icons">
-                <i class="fa-solid fa-trash trash"></i>
-              </div>
-            </div>
+            
           </div>
           <div class="right-section">
             <div class="progress">
@@ -68,23 +59,24 @@
               <p class="comp">Completed: 0 | Pending: 1</p>
               <p class="total">Total : 1</p>
             </div>
-            <div class="time-distribution">
-              <h4>Time Distribution</h4>
-              <canvas class="chart" width="200" height="200"></canvas>
-              <div class="legend">
-                <span class="work">work</span>
-                <span class="personal">personal</span>
-                <span class="health">health</span>
-                <span class="study">study</span>
-                <span class="other">other</span>
-              </div>
-            </div>
+           <div class="time-distribution">
+  <h4>Time Distribution</h4>
+  <canvas id="timeDistributionChart" style="max-height: 200px;"></canvas>
+  <div class="legend">
+    <span class="work">work</span>
+    <span class="personal">personal</span>
+    <span class="health">health</span>
+    <span class="study">study</span>
+    <span class="other">other</span>
+  </div>
+</div>
           </div>
         </div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script src="app.js"></script>
   </body>
 </html>

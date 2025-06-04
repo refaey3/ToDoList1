@@ -165,7 +165,8 @@ addButtom.addEventListener("click", function () {
     theBody.appendChild(task);
     theBody.appendChild(icons);
     left.appendChild(theBody);
-      
+      categoryCount[categoryParent.value]++;
+    updateChart();
 
 
     overaly.remove();
@@ -179,7 +180,11 @@ addButtom.addEventListener("click", function () {
 
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("trash")) {
+
     e.target.parentNode.parentNode.remove();
+    let taskCategory = e.target.parentNode.parentNode.querySelector(".task-category").innerHTML;
+    categoryCount[taskCategory]--; // تقليل العدد
+    updateChart(); //
     if (
       e.target.parentNode.parentNode
         .querySelector(".info")
@@ -214,5 +219,47 @@ document.addEventListener("click", function (e) {
     tot.innerHTML = `Total : ${complete + pend}`;
   }
 });
+const ctx = document.getElementById('timeDistributionChart').getContext('2d');
+let timeDistributionChart;
+
+function updateChart() {
+  const data = [
+    categoryCount.work,
+    categoryCount.personal,
+    categoryCount.health,
+    categoryCount.study,
+    categoryCount.other
+  ];
+
+  if (timeDistributionChart) {
+    timeDistributionChart.data.datasets[0].data = data;
+    timeDistributionChart.update();
+  } else {
+    timeDistributionChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['work', 'personal', 'health', 'study', 'other'],
+        datasets: [{
+          data: data,
+          backgroundColor: [
+            '#0000FF', '#008000', '#FF0000', '#FFFF00', '#808080'
+          ],
+          borderWidth: 1,
+          borderColor: '#FFFFFF'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Task Categories', color: '#000000' }
+        }
+      }
+    });
+  }
+}
+
+updateChart(); // استدعاء الدالة لأول مرة
 
 // Today's Progress
