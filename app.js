@@ -33,7 +33,7 @@ let timeParent = document.createElement("div");
 let cancelButtom = document.createElement("button");
 let categoryLabel = document.createElement("label");
 let complete = 0;
-let pend = 1;
+let pend = 0;
 let comp = document.querySelector(".comp");
 let tot = document.querySelector(".total");
 console.log(tot);
@@ -183,7 +183,7 @@ document.addEventListener("click", function (e) {
 
     e.target.parentNode.parentNode.remove();
     let taskCategory = e.target.parentNode.parentNode.querySelector(".task-category").innerHTML;
-    categoryCount[taskCategory]--; // تقليل العدد
+    categoryCount[taskCategory]--; 
     updateChart(); //
     if (
       e.target.parentNode.parentNode
@@ -260,6 +260,6 @@ function updateChart() {
   }
 }
 
-updateChart(); // استدعاء الدالة لأول مرة
+updateChart(); 
 
 // Today's Progress
