@@ -24,21 +24,21 @@
           <div class="rigth">
             <ul>
               <li>
-                <a href="#" class="active">
+                <a href="#" class="home">
                   Home
                   <i class="fa-solid fa-house"></i>
                 </a>
               </li>
               <li>
-                <a href="#"
-                  >Analyitcs
-                  <i class="fa-solid fa-chart-simple"></i>
+                <a href="#" class="schedule"
+                  >Schedule
+                  <i class="fa-solid fa-clipboard-list"></i>
                 </a>
               </li>
               <li>
-                <a href="#"
-                  >Setting
-                  <i class="fa-solid fa-gear"></i>
+                <a href="#" class="azkar"
+                  >Azkar
+                  <i class="fa-solid fa-moon"></i>
                 </a>
               </li>
             </ul>
@@ -51,7 +51,6 @@
               <h4>Today's Tasks</h4>
               <button class="add-task">+ Add Task</button>
             </div>
-            
           </div>
           <div class="right-section">
             <div class="progress">
@@ -59,24 +58,46 @@
               <p class="comp">Completed: 0 | Pending: 0</p>
               <p class="total">Total : 0</p>
             </div>
-           <div class="time-distribution">
-  <h4>Time Distribution</h4>
-  <canvas id="timeDistributionChart" style="max-height: 200px;"></canvas>
-  <div class="legend">
-    <span class="work">work</span>
-    <span class="personal">personal</span>
-    <span class="health">health</span>
-    <span class="study">study</span>
-    <span class="other">other</span>
-  </div>
-</div>
+            <div class="time-distribution">
+              <h4>Time Distribution</h4>
+              <canvas
+                id="timeDistributionChart"
+                style="max-height: 200px"
+              ></canvas>
+              <div class="legend">
+                <span class="work">work</span>
+                <span class="personal">personal</span>
+                <span class="health">health</span>
+                <span class="study">study</span>
+                <span class="other">other</span>
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="azkarcontainer" style="display: none">
+
+
+          
+        </div>
+        <div class="schedulecontainer" style="display: none">
+          <div class="head">
+            <h3>
+              <p class="today">Today's Schedule</p>
+              <p class="timeSchedule"></p>
+            </h3>
+          </div>
+          <div class="body">
+           
+            </div>
+            
+          </div>
+          
         </div>
       </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
     <script src="app.js"></script>
   </body>
 </html>

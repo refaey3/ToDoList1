@@ -465,5 +465,76 @@ a {
   opacity: 0.6;
   text-decoration: line-through;
 }
+/*Start Azkar and schedule*/
+.schedulecontainer {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  height: auto;
+  margin: 20px auto;
+  overflow: hidden;
+  padding-bottom: 12px;
+  /* direction: rtl; */
+}
+.schedulecontainer h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 20px;
+  color: #777;
+  font-size: 25px;
+  margin-inline: 40px;
+}
+.schedulecontainer h3 .today {
+  font-weight: bold;
+  color: black;
+}
+.schedulecontainer .body {
+  margin-inline: 30px;
+}
+
+.schedulecontainer .body > div {
+  margin-top: 42px;
+  display: flex;
+}
+.schedulecontainer .body > div:first-child{
+  margin: 0;
+}
+.schedulecontainer .body .timer {
+  margin-right: 17px;
+  position: relative;
+}
+.schedulecontainer .body .timer::after {
+  position: absolute;
+  content: "";
+  background-color: #ddd;
+  height: 52px;
+  width: 2px;
+  left: 110%;
+  top: -13px;
+}
+.schedulecontainer .body .tasks {
+  position: relative;
+  top: -19px;
+}
+.schedulecontainer .body .tasks > div {
+  background-color: rgb(166, 226, 245);
+  margin-top: 2px;
+  width: fit-content;
+  height: auto;
+  padding: 5px 26px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.schedulecontainer .body .tasks > div:hover {
+  background-color: rgb(135, 206, 235); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 767px) {
+  .schedulecontainer {
+    width: 97%;
+  }
+}
 
 

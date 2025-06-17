@@ -5,6 +5,8 @@ function getTime() {
   const year = date.getFullYear();
   const dataSting = `${day}/${month}/${year}`;
   document.querySelector(".time").innerHTML = dataSting;
+  document.querySelector(".timeSchedule").innerHTML = dataSting;
+
   setTimeout(getTime, 1000);
 }
 getTime();
@@ -36,6 +38,9 @@ let complete = 0;
 let pend = 0;
 let comp = document.querySelector(".comp");
 let tot = document.querySelector(".total");
+
+// Sche
+
 console.log(tot);
 
 categoryLabel.textContent = "Category";
@@ -125,8 +130,8 @@ let categoryCount = { work: 0, personal: 0, health: 0, study: 0, other: 0 };
 addButtom.addEventListener("click", function () {
   if (input.value.trim() === "") {
     Swal.fire({
-      text:"Add Task",
-      icon:"error"
+      text: "Add Task",
+      icon: "error",
     });
     return;
   } else {
@@ -165,9 +170,20 @@ addButtom.addEventListener("click", function () {
     theBody.appendChild(task);
     theBody.appendChild(icons);
     left.appendChild(theBody);
-      categoryCount[categoryParent.value]++;
-    updateChart();
+    // Task for Schdule
+    let taskForsceh = document.createElement("div");
+    let startHour = parseInt(startTime.value.slice(0, 2));
 
+    taskForsceh.className = "task";
+
+    taskForsceh.innerHTML = input.value;
+let taskSlot = document.querySelector(`.task${startHour} .tasks`);
+if(taskSlot)
+{
+  taskSlot.appendChild(taskForsceh);
+}
+    categoryCount[categoryParent.value]++;
+    updateChart();
 
     overaly.remove();
     parent.remove();
@@ -180,10 +196,10 @@ addButtom.addEventListener("click", function () {
 
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("trash")) {
-
     e.target.parentNode.parentNode.remove();
-    let taskCategory = e.target.parentNode.parentNode.querySelector(".task-category").innerHTML;
-    categoryCount[taskCategory]--; 
+    let taskCategory =
+      e.target.parentNode.parentNode.querySelector(".task-category").innerHTML;
+    categoryCount[taskCategory]--;
     updateChart(); //
     if (
       e.target.parentNode.parentNode
@@ -219,7 +235,7 @@ document.addEventListener("click", function (e) {
     tot.innerHTML = `Total : ${complete + pend}`;
   }
 });
-const ctx = document.getElementById('timeDistributionChart').getContext('2d');
+const ctx = document.getElementById("timeDistributionChart").getContext("2d");
 let timeDistributionChart;
 
 function updateChart() {
@@ -228,7 +244,7 @@ function updateChart() {
     categoryCount.personal,
     categoryCount.health,
     categoryCount.study,
-    categoryCount.other
+    categoryCount.other,
   ];
 
   if (timeDistributionChart) {
@@ -236,30 +252,87 @@ function updateChart() {
     timeDistributionChart.update();
   } else {
     timeDistributionChart = new Chart(ctx, {
-      type: 'doughnut',
+      type: "doughnut",
       data: {
-        labels: ['work', 'personal', 'health', 'study', 'other'],
-        datasets: [{
-          data: data,
-          backgroundColor: [
-            '#0000FF', '#008000', '#FF0000', '#FFFF00', '#808080'
-          ],
-          borderWidth: 1,
-          borderColor: '#FFFFFF'
-        }]
+        labels: ["work", "personal", "health", "study", "other"],
+        datasets: [
+          {
+            data: data,
+            backgroundColor: [
+              "#0000FF",
+              "#008000",
+              "#FF0000",
+              "#FFFF00",
+              "#808080",
+            ],
+            borderWidth: 1,
+            borderColor: "#FFFFFF",
+          },
+        ],
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
           legend: { display: false },
-          title: { display: true, text: 'Task Categories', color: '#000000' }
-        }
-      }
+          title: { display: true, text: "Task Categories", color: "#000000" },
+        },
+      },
     });
   }
 }
 
-updateChart(); 
+updateChart();
 
 // Today's Progress
+// Azkar
+let azkar = document.querySelector(".azkarcontainer");
+let tastContainer = document.querySelector(".task-container");
+
+document.querySelector(".azkar").addEventListener("click", function (e) {
+  azkar.style.display = "block";
+  tastContainer.style.display = "none";
+  schedule.style.display = "none";
+});
+document.querySelector(".home").addEventListener("click", function (e) {
+  azkar.style.display = "none";
+  schedule.style.display = "none";
+
+  tastContainer.style.display = "grid";
+});
+
+// schedule
+let schedule = document.querySelector(".schedulecontainer");
+document.querySelector(".schedule").addEventListener("click", function (e) {
+  schedule.style.display = "block";
+  tastContainer.style.display = "none";
+  azkar.style.display = "none";
+});
+
+function generateSchedule() {
+  let bodyOfTasks = document.querySelector(".schedulecontainer .body");
+
+  // TaskNumber time tasksDivforEachClock  task
+  // Apper The Container and dis
+
+  for (let i = 0; i <= 23; i++) {
+    let taskNumber = document.createElement("div");
+    let timer = document.createElement("p");
+    let tasksDivforEachClock = document.createElement("div");
+    taskNumber.className = `task${i}`;
+    timer.className = "timer";
+    // tasksDivForSech.className=`tasks`;
+
+    timer.innerHTML = `${i.toString().padStart(2, "0")}:00`;
+
+    tasksDivforEachClock.className = `tasks`;
+    taskNumber.appendChild(timer);
+    taskNumber.appendChild(tasksDivforEachClock);
+    // taskNumber.appendChild(tasksDivForSech);
+    bodyOfTasks.appendChild(taskNumber);
+  }
+
+  // get the time in it
+}
+
+generateSchedule();
